@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, TouchableOpacity, Text } from 'react-native'
+import { View, TouchableOpacity, Text, Plataform, StyleSheet } from 'react-native'
 import { getMetricMetaInfo, timeToString } from '../utils/helpers.js'
 import UdaciSlider from './UdaciSlider.js'
 import UdaciSteppers from './UdaciSteppers.js'
