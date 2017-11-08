@@ -7,17 +7,20 @@ import DateHeader from './date.js'
 import { Ionicons } from '@expo/vector-icons'
 import TextButton from './TextButton.js'
 import { submitEntry, removeEntry } from '../utils/api.js'
+import { connect } from 'react-redux'
+import { addEntry } from '../actions'
+import { getDailyReminderValue } from '../utils/helpers'
 
-function SubmitBtn ({onPress}) {
+function SubmitBtn({ onPress }) {
   return (
-    <TouchableOpacity 
+    <TouchableOpacity
       onPress={onPress}>
       <Text>Submit</Text>
     </TouchableOpacity>
   )
 }
 
-export default class AddEntry extends Component {
+class AddEntry extends Component {
   state = {
     run: 0,
     bike: 0,
@@ -57,7 +60,9 @@ export default class AddEntry extends Component {
     const key = timeToString();
     const entry = this.state;
 
-    //Update Redux
+    this.props.dispatch(addEntry({
+      [key]: entry
+    }))
 
     this.setState(() => ({
       run: 0,
@@ -69,7 +74,7 @@ export default class AddEntry extends Component {
 
     //Navigate to home
 
-    submitEntry({key, entry})
+    submitEntry({ key, entry })
 
     //Clear local notification
 
@@ -78,21 +83,23 @@ export default class AddEntry extends Component {
   reset = () => {
     const key = timeToString();
 
-    //Update Redux
+    this.props.dispatch(addEntry({
+      [key]: getDailyReminderValue()
+    }))
     //Route to Home
     removeEntry(key)
   }
 
   render() {
 
-    if(this.props.alreadyLogged) {
+    if (this.props.alreadyLogged) {
       return (
         <View>
           <Ionicons
             name='ios-happy-outline'
             size={100}
-            />
-          <Text>You alreafdy Logged your information for today</Text>  
+          />
+          <Text>You alreafdy Logged your information for today</Text>
           <TextButton onPress={this.reset}>
             Reset
           </TextButton>
@@ -116,17 +123,26 @@ export default class AddEntry extends Component {
                   onChange={(value) => this.slide(key, value)}
                   {...rest}
                 />
-                  : <UdaciSteppers
-                    value={value}
-                    onIncrement={() => this.increment(key)}
-                    onDecrement={() => this.decrement(key)}
-                    {...rest}
-                  />}
+                : <UdaciSteppers
+                  value={value}
+                  onIncrement={() => this.increment(key)}
+                  onDecrement={() => this.decrement(key)}
+                  {...rest}
+                />}
             </View>
           )
-              })}
-              <SubmitBtn onPress={this.submit} />
+        })}
+        <SubmitBtn onPress={this.submit} />
       </View>
-          )
-        }
+    )
+  }
 }
+
+const mapStateToProps = (state) => {
+  const key = timeToString()
+  return {
+    alreadyLogged: state[key] && typeof state[key].today === 'undefined'
+  }
+}
+
+export default connect(mapStateToProps)(AddEntry)
