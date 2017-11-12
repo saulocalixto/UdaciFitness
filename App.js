@@ -1,5 +1,5 @@
 import React from 'react'
-import { View } from 'react-native'
+import { View, ScrollView } from 'react-native'
 import { Ionicons } from "@expo/vector-icons"
 import AddEntry from './components/AddEntry.js'
 import { createStore } from 'redux'
