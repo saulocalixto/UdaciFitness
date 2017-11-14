@@ -28,6 +28,25 @@ Mais detalhes: [ScrollView]
 
 [Vídeo Imagens]
 
+### API Dimensions
+
+Usado para selecionar a largura e altura da tela do dispositivo do usuário.
+Para usar basta:
+
+`import { Dimensions } from 'react-native'`
+
+Em seguida você pode recuperar o tamanho da tela usando:
+
+`const { width, height } = Dimensions.get('window')`
+
+### Styled Components
+
+Você cria componentes em que o estilo ficará embutido dentro desse componente! 
+
+[Mais Informações], [GitHub Styled Components]
+
+
+
 ### Outros Componentes
 
 [ActivityIndicator]
@@ -49,3 +68,5 @@ Mais detalhes: [ScrollView]
 [Picker]: <https://facebook.github.io/react-native/docs/picker.html>
 [WebView]: <https://facebook.github.io/react-native/docs/webview.html>
 [Modal]: <https://facebook.github.io/react-native/docs/modal.html>
+[Mais Informações]: <https://youtu.be/XF_4MPpvRqs>
+[GitHub Styled Components]: <https://github.com/styled-components/styled-components>

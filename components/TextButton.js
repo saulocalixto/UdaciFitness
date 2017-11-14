@@ -4,8 +4,8 @@ import {purple} from '../utils/colors.js'
 
 export default TextButton = ({children, onPress, style = {}}) => {
   return (
-    <TouchableOpacity onPress={onPress} style={[styles.reset, style]}>
-      <Text>{children}</Text>
+    <TouchableOpacity onPress={onPress}>
+      <Text style={[styles.reset, style]}>{children}</Text>
     </ TouchableOpacity>
   )
 }
