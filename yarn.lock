@@ -4622,6 +4622,12 @@ react-native@^0.48.4:
     xtend ">=4.0.0 <4.1.0-0"
     yargs "^6.4.0"
 
+react-navigate@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/react-navigate/-/react-navigate-0.6.0.tgz#ab4ae928b2b6d6204cb8c19d23a15e8eef644882"
+  dependencies:
+    throttleit "1.0.0"
+
 react-navigation@^1.0.0-beta.19:
   version "1.0.0-beta.19"
   resolved "https://registry.yarnpkg.com/react-navigation/-/react-navigation-1.0.0-beta.19.tgz#96e159c4b6760f51fc92d5c1c3690790cff4dbcf"
@@ -5495,7 +5501,7 @@ throat@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/throat/-/throat-4.1.0.tgz#89037cbc92c56ab18926e6ba4cbb200e15672a6a"
 
-throttleit@^1.0.0:
+throttleit@1.0.0, throttleit@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/throttleit/-/throttleit-1.0.0.tgz#9e785836daf46743145a5984b6268d828528ac6c"
 
